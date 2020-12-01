@@ -8,11 +8,25 @@ const videoData = [
     },
     {
         id: 2,
-        title: "Presidential Fellows",
-        caption: "this video etc. for presidential",
-        vidid: "0Pmco39DpaQ",
+        title: "“let it go” cover by the Golden Hour Trio",
+        caption: "Ryan Bailis and Jaden Lee collaborate in this cover of James Bay's pop hit “Let it Go”, originally arranged by the Brooklyn Duo.",
+        vidid: "3tOWhpLQrYc",
         start: "0",
-    }
+    },
+    {
+        id: 3,
+        title: "bucknell’s presidential fellows",
+        caption: "this video documents the lived experiences of the presidential fellows of bucknell university.",
+        vidid: "qqVgnqEW8UU",
+        start: "0",
+    },
+    {
+        id: 4,
+        title: "harrisburg coronavirus protest",
+        caption: "produced with Wes Marshall, we interviewed participants at the Harrisburg COVID-19 lockdown protest.",
+        vidid: "GsUKd4SmjGs",
+        start: "0",
+    },
 ]
 
 export default videoData

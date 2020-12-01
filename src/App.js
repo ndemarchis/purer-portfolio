@@ -34,6 +34,8 @@ class App extends React.Component {
                     {videoItems}
                     </tbody></table>
                 </div>
+
+                {/* {window.location.href}"\n"{window.location.hostname} */}
                 
                 <div className="video-wrapper">
                     <h2>articles</h2>
@@ -42,12 +44,12 @@ class App extends React.Component {
                     </tbody></table>
                 </div>
                 
-                <div className="exp-wrapper">
+                {/* <div className="exp-wrapper">
                     <h2>experiences</h2>
                     <table><tbody>
                     {expItems}
                     </tbody></table>
-                </div>
+                </div> */}
                 
                 <div className="about">
                     <h2>about</h2>

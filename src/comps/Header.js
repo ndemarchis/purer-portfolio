@@ -10,7 +10,7 @@ class Header extends React.Component {
         }
     }
     
-    socials = [{url: "https://instagram.com/nickdemarchis"}, {url: "https://github.com/ndemarchis"}, {url: "https://linkedin.com/in/nickdemarchis"}, {url: "https://youtube.com/dadmarchis"},];
+    socials = [{url: "https://instagram.com/nick.demarchis"}, {url: "https://github.com/ndemarchis"}, {url: "https://linkedin.com/in/nickdemarchis"}, {url: "mailto:ned004@bucknell.edu"},];
     
     socialItems = this.socials.map((item) => ( <SocialIcon key={item.key} url={item.url} bgColor="#000000" fgColor="#ffffff" style={{ height: 30 }} /> ))
     
