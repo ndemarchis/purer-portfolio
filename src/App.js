@@ -51,7 +51,10 @@ class App extends React.Component {
                 
                 <div className="about">
                     <h2>about</h2>
-                    <p>nick demarchis is a junior in the class of 2022 at Bucknell University. he is studying computer engineering with a minor in film and media studies.</p>
+                    <p>
+                        nick demarchis is a junior in the class of 2022 at Bucknell University. 
+                        he is studying computer engineering with a minor in film and media studies.
+                        send an email to <a href="mailto:ned004@bucknell.edu">ned004@bucknell.edu</a>.</p>
                     <p></p>
                 </div>
             </div>

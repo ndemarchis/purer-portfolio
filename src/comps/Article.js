@@ -10,10 +10,12 @@ function Article(props) {
         // <div className="video">
         <tr>
             <td className="artThumb">
-                <img className="artImg" src={props.item.img} />
+                <a href={props.item.url}>
+                <img className="artImg" src={props.item.img} alt=""/></a>
             </td>
             <td className="artData">
-                <h3>{props.item.title}</h3>
+                <a href={props.item.url}>
+                <h3>{props.item.title}</h3></a>
                 <p>{props.item.caption}</p>
             </td>
         </tr>
