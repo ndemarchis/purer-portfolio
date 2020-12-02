@@ -1,4 +1,5 @@
 import React from "react"
+import { Link, DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 
 import './style.css';
 import Header from "./comps/Header"
@@ -52,12 +53,21 @@ class App extends React.Component {
                 </div> */}
                 
                 <div className="about">
-                    <h2>about</h2>
+                    <Element name="about"><a id="about"></a>
+                        <h2>about</h2>
+                    </Element>
                     <p>
-                        nick demarchis is a junior in the class of 2022 at Bucknell University. 
-                        he is studying computer engineering with a minor in film and media studies.
-                        send an email to <a href="mailto:ned004@bucknell.edu">ned004@bucknell.edu</a>.</p>
-                    <p></p>
+                        i'm a junior in the class of 2022 at Bucknell University, pursuing
+                        a B.S. in computer engineering with a minor in film and media studies.
+                    </p>
+                    <p>
+                        the meaning of the phrase "making things beautiful" is the pursuit of beauty through
+                        visual simplicity and practical efficiency. everything that i do — video production,
+                        engineering, all my hobbies and interests — are to make the most beautiful thing
+                        possible. whether it's reducing the runtime on a problematic Python system, trimming
+                        down the time on a long video, or putting the finishing touches on an opinions piece,
+                        i'm of the firm belief that everything can accomplish its purpose in a beautiful way.
+                    </p><br /><br />
                 </div>
             </div>
         )    
