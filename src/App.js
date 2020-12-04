@@ -1,5 +1,7 @@
-import React from "react"
+import React from "react";
 // import { Link, DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+import { gsap } from "gsap";
+import { CSSRulePlugin } from "gsap/CSSRulePlugin";
 
 import './style.css';
 import Header from "./comps/Header"
@@ -13,10 +15,15 @@ import expData from "./data/expData"
 class App extends React.Component {
 
     colors = [
-        ["rgba(0,0,0,1)", "rgb(9, 0, 51)", "rgb(0, 30, 43)"],
+        // ["rgba(0,0,0,1)", "rgb(9, 0, 51)", "rgb(0, 30, 43)"],
         ["#022b3b","#234157","#3e5a20"],
-        ["#09090b","#e84855","#3185fc"],
-        ["#320e3b","#e56399","#7f96ff"]
+        // ["#09090b","#e84855","#3185fc"],
+        ["#320e3b","#e56399","#7f96ff"],
+        ["#4b2840","#861388","#e15a97"], // purple
+        ["#8f95d3","#5850fa","#da5552"], // blue, gray, red
+        // ["#297045","#2e933c","#74b63e"], // light to dark green
+        ["#594157","#726da8","#7d8cc4"], // dark blue gray, etc.
+
     ]
 
     constructor(props) {
@@ -25,21 +32,22 @@ class App extends React.Component {
             videos: videoData,
             articles: articleData,
             exps: expData,
-            colArr: ["rgba(0,0,0,1)", "rgb(9, 0, 51)", "rgb(0, 30, 43)"],
-            // background: "rgba(0,0,0,1)",
+            curColorIndex: 0,
         }
+
         this.handler = this.handler.bind(this)
-        this.changeColor(this.state.colArr)
+    }
+
+    componentDidMount() {
+        this.changeColor(this.colors[0])
+        gsap.registerPlugin(CSSRulePlugin);
     }
 
     handler() {
-        this.setState({
-          colArr: Math.random()
-        })
-        var arr = this.colors[Math.floor(Math.random() * this.colors.length)]
-        // console.log(`state.colArr changed to ${this.state.colArr}`)
-        console.log(`state.colArr changed to ${arr}`)
-        this.changeColor(arr)
+        let index = Math.floor(Math.random() * this.colors.length)
+        let arr = this.colors[index]
+        let v = `linear-gradient(204deg, ${arr[0]} 0%, ${arr[1]} 62%, ${arr[2]} 100%)`;
+        gsap.to(document.body, {duration: 0.5, background: v});
     }
 
     changeColor(cArr) {
@@ -54,8 +62,6 @@ class App extends React.Component {
  
         return (
             <div className="app-wrapper">
-            {/* <div className="app-wrapper" style={{background: this.state.background}}> */}
-                {/* <Header changeStateArr={this.changeStateArr.bind(this)} /> */}
                 <Header handler = {this.handler} />
                 
                 <div className="video-wrapper">
@@ -64,8 +70,6 @@ class App extends React.Component {
                     {videoItems}
                     </tbody></table>
                 </div>
-
-                {/* {window.location.href}"\n"{window.location.hostname} */}
                 
                 <div className="video-wrapper">
                     <h2>articles</h2>
