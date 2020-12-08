@@ -15,14 +15,16 @@ import expData from "./data/expData"
 class App extends React.Component {
 
     colors = [
-        // ["rgba(0,0,0,1)", "rgb(9, 0, 51)", "rgb(0, 30, 43)"],
+        ["rgba(0,0,0,1)", "rgb(9, 0, 51)", "rgb(0, 30, 43)"],
+        ["#320e3b","#e56399","#7f96ff"], // bright pink
         ["#022b3b","#234157","#3e5a20"],
         // ["#09090b","#e84855","#3185fc"],
-        ["#320e3b","#e56399","#7f96ff"],
         ["#4b2840","#861388","#e15a97"], // purple
-        ["#8f95d3","#5850fa","#da5552"], // blue, gray, red
+        ["#aa4465","#861657","#011638"], // bright pink basically inverse
+        ["#dbb1bc","#d3c4e3","#8f95d3","black"]
+        // ["#8f95d3","#5850fa","#da5552"], // blue, gray, red
         // ["#297045","#2e933c","#74b63e"], // light to dark green
-        ["#594157","#726da8","#7d8cc4"], // dark blue gray, etc.
+        // ["#594157","#726da8","#7d8cc4"], // dark blue gray, etc.
 
     ]
 
@@ -32,7 +34,9 @@ class App extends React.Component {
             videos: videoData,
             articles: articleData,
             exps: expData,
+
             curColorIndex: 0,
+            curTextColor: "#ffffff",
         }
 
         this.handler = this.handler.bind(this)
@@ -41,13 +45,28 @@ class App extends React.Component {
     componentDidMount() {
         this.changeColor(this.colors[0])
         gsap.registerPlugin(CSSRulePlugin);
+        this.socialIcons = document.getElementById("socialIcon");
     }
 
     handler() {
-        let index = Math.floor(Math.random() * this.colors.length)
-        let arr = this.colors[index]
+        let i = this.state.curColorIndex
+        if (i + 1 < this.colors.length) { i++ } else { i = 0 }
+        this.setState({curColorIndex: i})
+        let arr = this.colors[i]
         let v = `linear-gradient(204deg, ${arr[0]} 0%, ${arr[1]} 62%, ${arr[2]} 100%)`;
-        gsap.to(document.body, {duration: 0.5, background: v});
+
+        if (typeof arr[3] === 'undefined') {
+            this.setState({curTextColor: "#ffffff"})
+        } else {
+            this.setState({curTextColor: arr[3]})
+        }
+
+        let root = document.documentElement;
+        root.style.setProperty('--text-color', arr[3]);
+        
+        gsap.to(document.body, { duration: 0.5, background: v });
+        gsap.to(this.socialIcons, { duration: 0.5, fgColor: this.state.curTextColor})
+
     }
 
     changeColor(cArr) {

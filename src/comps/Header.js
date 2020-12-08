@@ -18,7 +18,7 @@ class Header extends React.Component {
         {url: "mailto:ned004@bucknell.edu"},
     ];
     
-    socialItems = this.socials.map((item) => ( <SocialIcon key={item.key} url={item.url} bgColor="#00000000" fgColor="#ffffff" style={{ height: 30 }} /> ))
+    socialItems = this.socials.map((item) => ( <SocialIcon key={item.key} className="socialIcon" url={item.url} bgColor="#00000000" fgColor="#ffffff" style={{ height: 30 }} /> ))
     
     handleClick(e) {
         e.preventDefault();
