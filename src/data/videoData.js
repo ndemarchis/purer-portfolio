@@ -15,13 +15,20 @@ const videoData = [
     },
     {
         id: 3,
+        title: "bucknell candlelight 2020",
+        caption: "produced with Ryan Bremer, we worked with Rooke Chapel to create a virtual version of Bucknell's annual candlelight christmas service.",
+        vidid: "dIDhVSOrNWE",
+        start: "0",
+    },
+    {
+        id: 4,
         title: "bucknell’s presidential fellows",
         caption: "this video documents the lived experiences of the presidential fellows of bucknell university.",
         vidid: "qqVgnqEW8UU",
         start: "0",
     },
     {
-        id: 4,
+        id: 5,
         title: "harrisburg coronavirus protest",
         caption: "produced with Wes Marshall, we interviewed participants at the Harrisburg COVID-19 lockdown protest.",
         vidid: "GsUKd4SmjGs",
