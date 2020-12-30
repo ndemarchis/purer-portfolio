@@ -12,17 +12,12 @@ a {
     text-decoration: none;
 }
 
-iframe {
-    width: 100%;
+h2 {
+    text-align: center;
+    font-style: italic;
+    /* font-weight: 100; */
+    /* letter-spacing: 0.02em; */
 }
-
-/* 
-table, th, td {
-    border: 1px solid;
-} */
-
-
-h2 {text-align: center;}
 
 
 @media 
@@ -53,19 +48,19 @@ only screen and (max-width: 500px) {
 only screen and (min-width: 501px) {
 
     .app-wrapper {
-        width: 80vw;
+        width: 90vw;
         margin: auto;
-        max-width: 500px;
+        max-width: 700px;
     }
 
     td.vidData {
         padding: 30px;
-        width: 50%;
+        width: 40%;
         align-content: "right";
     }
 
     td.vidThumb {
-        width: 50%;
+        width: 60%;
     }
 
     img {
@@ -92,7 +87,7 @@ only screen and (min-width: 501px) {
     h3 {text-align: right;}
 
     img,
-    iframe {
+    ReactPlayer {
         border: 3px solid #000;
         /* border-radius: 3px; */
     }

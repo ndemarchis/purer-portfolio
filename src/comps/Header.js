@@ -12,9 +12,9 @@ class Header extends React.Component {
     }
     
     socials = [
-        {url: "https://instagram.com/nick.demarchis"}, 
         {url: "https://github.com/ndemarchis"}, 
         {url: "https://linkedin.com/in/nickdemarchis"}, 
+        {url: "https://medium.com/@nickdemarchis"}, 
         {url: "mailto:ned004@bucknell.edu"},
     ];
     
@@ -29,9 +29,15 @@ class Header extends React.Component {
     render() {
         return(
             <div className="headerWrapper"><table width="100%"><tbody><tr>
-                <td><h1>
-                    nick deMarchis
-                </h1></td>
+                <td>
+                    <h1 
+                        style={{
+                            // fontWeight: 100
+                        }}
+                    >
+                        nick deMarchis
+                    </h1>
+                </td>
                 <td className="socials" align="right">
                         <a onClick={this.props.handler} href="#">😎</a>&nbsp;&nbsp;&nbsp;&nbsp;
                     {this.socialItems}

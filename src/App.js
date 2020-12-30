@@ -68,14 +68,18 @@ class App extends React.Component {
                 <Header handler = {this.handler} />
                 
                 <div className="video-wrapper">
+                    <br />
                     <h2>videos</h2>
+                    <br /><br />
                     <table><tbody>
                     {videoItems}
                     </tbody></table>
                 </div>
                 
                 <div className="video-wrapper">
+                    <br /><br /> 
                     <h2>articles</h2>
+                    <br />
                     <table><tbody>
                     {articleItems}
                     </tbody></table>
@@ -89,6 +93,7 @@ class App extends React.Component {
                 </div> */}
                 
                 <div className="about">
+                    <br />
                     <h2>about</h2>
                     <p>
                         i'm a junior in the class of 2022 at Bucknell University, pursuing
