@@ -9,7 +9,7 @@ function Video(props) {
 
     return (
         <tr>
-            <td className="vidThumb">
+            <td className="vidThumb" colSpan={props.item.colspan}>
                 <ReactPlayer 
                     url={hypUrl} 
                     width="100%" 

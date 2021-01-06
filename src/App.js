@@ -2,6 +2,8 @@ import React from "react";
 // import { Link, DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 import { gsap } from "gsap";
 import { CSSRulePlugin } from "gsap/CSSRulePlugin";
+import ReactPlayer from 'react-player'
+import Expand from 'react-expand-animated';
 
 import './style.css';
 import Header from "./comps/Header"
@@ -34,6 +36,10 @@ class App extends React.Component {
             articles: articleData,
             exps: expData,
             curColorIndex: 0,
+
+            vidOpen: false,
+            artOpen: false,
+            expOpen: false,
         }
 
         this.handler = this.handler.bind(this)
@@ -58,43 +64,82 @@ class App extends React.Component {
         document.body.style.background = v;
     }
 
+    toggleVid = () => {
+        this.setState(prevState => ({ vidOpen: !prevState.vidOpen }))
+    }
+
+    toggleArt = () => {
+        this.setState(prevState => ({ artOpen: !prevState.artOpen }))
+    }
+
+    toggleExp = () => {
+        this.setState(prevState => ({ expOpen: !prevState.expOpen }))
+    }
+
     render() {
-        const videoItems = this.state.videos.map(item => <Video key={item.id} item={item}/>)
+
+        const videoItems = this.state.videos.slice(1).map(item => <Video key={item.id} item={item}/>)
         const articleItems = this.state.articles.map(item => <Article key={item.id} item={item}/>)
         const expItems = this.state.exps.map(item => <Experience key={item.id} item={item}/>)
  
         return (
             <div className="app-wrapper">
+
                 <Header handler = {this.handler} />
                 
                 <div className="video-wrapper">
                     <br />
-                    <h2>videos</h2>
-                    <br /><br />
-                    <table><tbody>
-                    {videoItems}
-                    </tbody></table>
+                    {/* <Video item={this.state.videos[0]} width="80%"/> */}
+                    <ReactPlayer 
+                        className="featured-video"
+                        url={`https://youtube.com/watch?v=${this.state.videos[0].vidid}`} 
+                        width="100%"
+                        // height="235px"
+                        light={true} 
+                        playing={true} 
+                        config={{youtube: {
+                            playerVars: { 
+                                controls: 1,
+                                modestbranding: 1,
+                                fs: 1,
+                            }
+                        },}}
+                    /><br />
+                    <h2 onClick={this.toggleVid}><a href="#">videos</a></h2>
+                    <Expand open={this.state.vidOpen}>
+                        <br />
+                        <table><tbody>
+                        {videoItems}
+                        </tbody></table>
+                        <br />
+                    </Expand>
                 </div>
                 
-                <div className="video-wrapper">
-                    <br /><br /> 
-                    <h2>articles</h2>
-                    <br />
-                    <table><tbody>
-                    {articleItems}
-                    </tbody></table>
+                <div className="article-wrapper">
+                    <h2 onClick={this.toggleArt}><a href="#">articles</a></h2>
+                    <Expand open={this.state.artOpen}>
+                        <br />
+                        <table><tbody>
+                        {articleItems}
+                        </tbody></table>
+                        <br />
+                    </Expand>
                 </div>
                 
-                {/* <div className="exp-wrapper">
-                    <h2>experiences</h2>
-                    <table><tbody>
-                    {expItems}
-                    </tbody></table>
-                </div> */}
+                <div className="experience-wrapper">
+                    {/* <h2 onClick={this.toggleExp}>experiences</h2>
+                    <Expand open={this.state.expOpen}>
+                        <br />
+                        <table><tbody>
+                        {expItems}
+                        </tbody></table>
+                        <br />
+                    </Expand> */}
+                </div>
                 
                 <div className="about">
-                    <br />
                     <h2>about</h2>
+                    <br />
                     <p>
                         i'm a junior in the class of 2022 at Bucknell University, pursuing
                         a B.S. in computer engineering with a minor in film and media studies.
@@ -108,6 +153,7 @@ class App extends React.Component {
                         i'm of the firm belief that everything can accomplish its purpose in a beautiful way.
                     </p><br /><br />
                 </div>
+            
             </div>
         )    
     }
