@@ -105,7 +105,7 @@ class App extends React.Component {
                             }
                         },}}
                     /><br />
-                    <h2 onClick={this.toggleVid}><a href="#">videos</a></h2>
+                    <h2 onClick={this.toggleVid}><a href="javascript:;">videos</a></h2>
                     <Expand open={this.state.vidOpen}>
                         <br />
                         <table><tbody>
@@ -116,7 +116,7 @@ class App extends React.Component {
                 </div>
                 
                 <div className="article-wrapper">
-                    <h2 onClick={this.toggleArt}><a href="#">articles</a></h2>
+                    <h2 onClick={this.toggleArt}><a href="javascript:;">articles</a></h2>
                     <Expand open={this.state.artOpen}>
                         <br />
                         <table><tbody>

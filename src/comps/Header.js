@@ -39,7 +39,7 @@ class Header extends React.Component {
                     </h1>
                 </td>
                 <td className="socials" align="right">
-                        <a onClick={this.props.handler} href="#">😎</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a onClick={this.props.handler} href="javascript:;">😎</a>&nbsp;&nbsp;&nbsp;&nbsp;
                     {this.socialItems}
                 </td>
             </tr></tbody></table></div>
