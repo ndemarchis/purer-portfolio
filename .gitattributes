@@ -1,3 +1,5 @@
 src/data/img/** filter=lfs diff=lfs merge=lfs -text
 public/img/** filter=lfs diff=lfs merge=lfs -text
 public/apple-touch-icon.png filter=lfs diff=lfs merge=lfs -text
+/public/img/twenty.png filter=lfs diff=lfs merge=lfs -text
+/src/comps/img/** filter=lfs diff=lfs merge=lfs -text

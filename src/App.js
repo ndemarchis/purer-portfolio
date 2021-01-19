@@ -6,6 +6,7 @@ import ReactPlayer from 'react-player'
 import Expand from 'react-expand-animated';
 
 import './style.css';
+import twenty from "./comps/img/twenty.png"
 import Header from "./comps/Header"
 import Video from "./comps/Video"
 import videoData from "./data/videoData"
@@ -95,8 +96,11 @@ class App extends React.Component {
                         url={`https://youtube.com/watch?v=${this.state.videos[0].vidid}`} 
                         width="100%"
                         // height="235px"
-                        light={true} 
+                        light={twenty}
                         playing={true} 
+                        style={{
+                            border: "1px solid #fff"
+                        }}
                         config={{youtube: {
                             playerVars: { 
                                 controls: 1,
