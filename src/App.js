@@ -109,6 +109,16 @@ class App extends React.Component {
                             }
                         },}}
                     /><br />
+                    <div className="experience-wrapper">
+                        <h2 onClick={this.toggleExp}><a href="javascript:;">projects / experiences</a></h2>
+                        <Expand open={this.state.expOpen}>
+                            <br />
+                            <table><tbody>
+                            {expItems}
+                            </tbody></table>
+                            <br />
+                        </Expand>
+                    </div>
                     <h2 onClick={this.toggleVid}><a href="javascript:;">videos</a></h2>
                     <Expand open={this.state.vidOpen}>
                         <br />
@@ -128,17 +138,6 @@ class App extends React.Component {
                         </tbody></table>
                         <br />
                     </Expand>
-                </div>
-                
-                <div className="experience-wrapper">
-                    {/* <h2 onClick={this.toggleExp}>experiences</h2>
-                    <Expand open={this.state.expOpen}>
-                        <br />
-                        <table><tbody>
-                        {expItems}
-                        </tbody></table>
-                        <br />
-                    </Expand> */}
                 </div>
                 
                 <div className="about">
