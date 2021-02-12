@@ -96,7 +96,7 @@ class App extends React.Component {
                         url={`https://youtube.com/watch?v=${this.state.videos[0].vidid}`} 
                         width="100%"
                         // height="235px"
-                        light={twenty}
+                        light={"/img/twenty.png"}
                         playing={true} 
                         style={{
                             border: "1px solid #fff"
