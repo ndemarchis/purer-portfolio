@@ -2,7 +2,7 @@ const expData = [
     {
         id: 0,
         title: "unitedmasters",
-        caption: "",
+        caption: "engineering intern",
         img: "https://cdx.solo.to/images/link/unitedmasters.svg",
         dates: "summer 2021",
         link: "https://unitedmasters.com",

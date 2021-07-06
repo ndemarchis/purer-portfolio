@@ -36,7 +36,7 @@ const App = () => {
     useEffect(() => {
         changeColor(colors[0])
         gsap.registerPlugin(CSSRulePlugin);
-    })
+    }, [])
 
     const handler = () => {
         let i = curColorIndex
