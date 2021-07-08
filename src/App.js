@@ -14,10 +14,12 @@ import articleData from "./data/articleData"
 import Experience from "./comps/Experience"
 import expData from "./data/expData"
 
-const App = () => {
+import ContentfulQuery from "./utils/ContentfulQuery.graphql"
 
-    const BASE_URL = process.env.REACT_APP_CONTENTFUL_KEY;
-    console.log("base URL: " + BASE_URL);
+import * as contentful from "contentful";
+// import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+
+const App = () => {
 
     const colors = [
         ["rgba(0,0,0,1)", "rgb(9, 0, 51)", "rgb(0, 30, 43)"],
@@ -36,10 +38,36 @@ const App = () => {
     const [artOpen, setArtOpen] = useState(false);
     const [expOpen, setExpOpen] = useState(false);
 
-    useEffect(() => {
-        changeColor(colors[0])
-        gsap.registerPlugin(CSSRulePlugin);
-    }, [])
+    const [CMSData, setCMSData] = useState();
+
+    const getCMSData = () => {
+        const client = contentful.createClient({
+            space: process.env.REACT_APP_CONTENTFUL_ID,
+            // environment: '<environment_id>', // defaults to 'master' if not set
+            accessToken: process.env.REACT_APP_CONTENTFUL_KEY,
+        });
+    
+        client.getContentTypes()
+            .then((response) => {
+                let out = response.items.map(entry => entry.sys.id);
+    
+                let final = {};
+    
+                for (const id of out) {
+                    client.getEntries({
+                        content_type: id
+                    })
+                        .then((response) => {
+                            final[id] = response.items;
+                        })
+                        .catch(console.error);
+                }
+    
+                setCMSData(final);
+    
+            })
+            .catch(console.error);
+    }
 
     const handler = () => {
         let i = curColorIndex
@@ -54,10 +82,26 @@ const App = () => {
         document.body.style.background = v;
     }
 
+    const genBackgroundString = (cArr) => {
+        let v;
+        if (cArr.length === 2) {
+            v = `linear-gradient(204deg, ${cArr[0]} 0%, ${cArr[1]} 100%)`;
+        } else if (cArr.length === 3) {
+            v = `linear-gradient(204deg, ${cArr[0]} 0%, ${cArr[1]} 62%, ${cArr[2]} 100%)`;
+        }
+        return v;
+    }
+
     const toggleVid = () => { setVidOpen(!vidOpen); }
     const toggleArt = () => { setArtOpen(!artOpen); }
     const toggleExp = () => { setExpOpen(!expOpen); }
 
+    useEffect(() => {
+        changeColor(colors[0])
+        gsap.registerPlugin(CSSRulePlugin);
+        getCMSData()
+        console.log(CMSData)
+    }, [])
 
     const videoItems = videos.slice(1).map(item => <Video key={item.id} item={item}/>)
     const articleItems = articles.map(item => <Article key={item.id} item={item}/>)
@@ -139,13 +183,3 @@ const App = () => {
 }
 
 export default App
-
-function genBackgroundString(cArr) {
-    let v;
-    if (cArr.length === 2) {
-        v = `linear-gradient(204deg, ${cArr[0]} 0%, ${cArr[1]} 100%)`;
-    } else if (cArr.length === 3) {
-        v = `linear-gradient(204deg, ${cArr[0]} 0%, ${cArr[1]} 62%, ${cArr[2]} 100%)`;
-    }
-    return v;
-}
