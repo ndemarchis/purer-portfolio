@@ -16,6 +16,9 @@ import expData from "./data/expData"
 
 const App = () => {
 
+    const BASE_URL = process.env.REACT_APP_CONTENTFUL_KEY;
+    console.log("base URL: " + BASE_URL);
+
     const colors = [
         ["rgba(0,0,0,1)", "rgb(9, 0, 51)", "rgb(0, 30, 43)"],
         ["#e81cff","#40c9ff"],
