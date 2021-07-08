@@ -14,8 +14,6 @@ import articleData from "./data/articleData"
 import Experience from "./comps/Experience"
 import expData from "./data/expData"
 
-import ContentfulQuery from "./utils/ContentfulQuery.graphql"
-
 import * as contentful from "contentful";
 // import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
@@ -38,7 +36,7 @@ const App = () => {
     const [artOpen, setArtOpen] = useState(false);
     const [expOpen, setExpOpen] = useState(false);
 
-    const [CMSData, setCMSData] = useState();
+    const [CMSData, setCMSData] = useState(null);
 
     const getCMSData = () => {
         const client = contentful.createClient({
@@ -102,6 +100,10 @@ const App = () => {
         getCMSData()
         console.log(CMSData)
     }, [])
+
+    useEffect(() => {
+        console.log(CMSData)
+    }, [CMSData])
 
     const videoItems = videos.slice(1).map(item => <Video key={item.id} item={item}/>)
     const articleItems = articles.map(item => <Article key={item.id} item={item}/>)
