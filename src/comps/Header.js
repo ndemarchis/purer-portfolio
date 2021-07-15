@@ -11,7 +11,7 @@ const Header = () => {
     // TODO import from CMS as socials
     
     
-    socialItems = this.socials.map((item) => ( <SocialIcon key={item.key} url={item.url} bgColor="#00000000" fgColor="#ffffff" style={{ height: 30 }} /> ))
+    // const socialItems = this.socials.map((item) => ( <SocialIcon key={item.key} url={item.url} bgColor="#00000000" fgColor="#ffffff" style={{ height: 30 }} /> ))
     
     const handleClick = (e) => {
         e.preventDefault();
@@ -30,13 +30,13 @@ const Header = () => {
                 </h1>
             </td>
             <td className="socials" align="right">
-                    <a onClick={this.props.handler} href="javascript:;">😎</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                {this.socialItems}
+                    {/* <a onClick={this.props.handler} href="javascript:;">😎</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                {this.socialItems} */}
             </td>
         </tr></tbody></table>
         <ReactPlayer 
                 className="featured-video"
-                url={`https://youtube.com/watch?v=${videos[0].vidid}`} 
+                // url={`https://youtube.com/watch?v=${videos[0].vidid}`} 
                 width="100%"
                 light={""}
                 playing={true} 

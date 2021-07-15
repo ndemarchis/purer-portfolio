@@ -4,7 +4,6 @@ import { CSSRulePlugin } from "gsap/CSSRulePlugin";
 import ReactPlayer from 'react-player'
 import Expand from 'react-expand-animated';
 
-import './style.css';
 import Header from "./comps/Header"
 import Video from "./comps/Video"
 import Article from "./comps/Article"
@@ -18,48 +17,49 @@ const App = () => {
     const [artOpen, setArtOpen] = useState(false);
     const [expOpen, setExpOpen] = useState(false);
 
-    const [CMSData, setCMSData] = useState(null);
-
-    const getCMSData = () => {
-        const client = contentful.createClient({
-            space: process.env.REACT_APP_CONTENTFUL_ID,
-            // environment: '<environment_id>', // defaults to 'master' if not set
-            accessToken: process.env.REACT_APP_CONTENTFUL_KEY,
-        });
-    
-        client.getContentTypes()
-            .then((response) => {
-                let out = response.items.map(entry => entry.sys.id);
-    
-                let final = {};
-    
-                for (const id of out) {
-                    client.getEntries({
-                        content_type: id
-                    })
-                        .then((response) => {
-                            final[id] = response.items;
-                        })
-                        .catch(console.error);
-                }
-    
-                setCMSData(final);
-    
-            })
-            .catch(console.error);
-    }
+    const [CMSData, setCMSData] = useState('');
 
     const toggleVid = () => { setVidOpen(!vidOpen); }
     const toggleArt = () => { setArtOpen(!artOpen); }
     const toggleExp = () => { setExpOpen(!expOpen); }
 
+    const client = contentful.createClient({
+        space: process.env.REACT_APP_CONTENTFUL_ID,
+        // environment: '<environment_id>', // defaults to 'master' if not set
+        accessToken: process.env.REACT_APP_CONTENTFUL_KEY,
+    });
+
+    const GetCMSData = () => { 
+        client.getContentTypes()
+        .then((response) => {
+            let out = response.items.map(entry => entry.sys.id);
+
+            let final = {};
+
+            for (const id of out) {
+                client.getEntries({
+                    content_type: id
+                })
+                    .then((response) => {
+                        final[id] = response.items;
+                    })
+                    .catch(console.error);
+            }
+
+            setCMSData(final)
+
+        })
+        .catch(console.error);
+    }
+
     useEffect(() => {
-        getCMSData()
-        console.log(CMSData)
+        setCMSData(GetCMSData())
     }, [])
 
     useEffect(() => {
         console.log(CMSData)
+
+        // TODO: conditionally render Header, Video, Article and Experience components
     }, [CMSData])
 
     return (
@@ -69,6 +69,7 @@ const App = () => {
             <div className="experience-wrapper">
                 <h2 onClick={toggleExp}><a href="javascript:;">projects / experiences</a></h2>
                 <Expand open={expOpen}>
+                    daddy made you your favorite, open wide
                 </Expand>
             </div>
 
