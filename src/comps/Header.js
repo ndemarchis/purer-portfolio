@@ -1,50 +1,58 @@
-import React from "react";
+import React, {useState} from "react";
 import { SocialIcon } from 'react-social-icons';
-import socialData from "../data/socialData";
+import ReactPlayer from 'react-player'
 
 
-class Header extends React.Component {
-    constructor() {
-        super()
-        this.state = {
-            socials: socialData,
-        }
-    }
+const Header = () => {
+
+    const [socials, setSocials] = useState();
     
-    socials = [
-        {url: "https://github.com/ndemarchis"}, 
-        {url: "https://linkedin.com/in/nickdemarchis"}, 
-        {url: "https://medium.com/@nickdemarchis"}, 
-        {url: "mailto:ned004@bucknell.edu"},
-    ];
+
+    // TODO import from CMS as socials
+    
     
     socialItems = this.socials.map((item) => ( <SocialIcon key={item.key} url={item.url} bgColor="#00000000" fgColor="#ffffff" style={{ height: 30 }} /> ))
     
-    handleClick(e) {
+    const handleClick = (e) => {
         e.preventDefault();
-        this.props.changeStateArr(["#000000","#000000","#000000"]);
-        console.log('The link was clicked.');
-    }
-    
-    render() {
-        return(
-            <div className="headerWrapper"><table width="100%"><tbody><tr>
-                <td>
-                    <h1 
-                        style={{
-                            // fontWeight: 100
-                        }}
-                    >
-                        nick deMarchis
-                    </h1>
-                </td>
-                <td className="socials" align="right">
-                        <a onClick={this.props.handler} href="javascript:;">😎</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                    {this.socialItems}
-                </td>
-            </tr></tbody></table></div>
-        )
-    }
+        // this.props.changeStateArr(["#000000","#000000","#000000"]);
+        // console.log('The link was clicked.');
+    };
+    return (
+        <div className="headerWrapper"><table width="100%"><tbody><tr>
+            <td>
+                <h1 
+                    style={{
+                        // fontWeight: 100
+                    }}
+                >
+                    nick deMarchis
+                </h1>
+            </td>
+            <td className="socials" align="right">
+                    <a onClick={this.props.handler} href="javascript:;">😎</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                {this.socialItems}
+            </td>
+        </tr></tbody></table>
+        <ReactPlayer 
+                className="featured-video"
+                url={`https://youtube.com/watch?v=${videos[0].vidid}`} 
+                width="100%"
+                light={""}
+                playing={true} 
+                style={{
+                    border: "1px solid #fff"
+                }}
+                config={{youtube: {
+                    playerVars: { 
+                        controls: 1,
+                        modestbranding: 1,
+                        fs: 1,
+                    }
+                },}}
+            />
+        </div>
+    )
 }
 
 export default Header

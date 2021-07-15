@@ -1,6 +1,6 @@
 import React from "react"
 
-function Experience(props) {
+const Experience = (props) => {
     
     return (
         // <div className="video">

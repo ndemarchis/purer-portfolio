@@ -1,7 +1,7 @@
 import React from "react"
 import ReactPlayer from 'react-player'
 
-function Video(props) {
+const Video = (props) => {
     
     const srcUrl = `https://www.youtube.com/embed/${props.item.vidid}?start=${props.item.start}&modestbranding=1&rel=0&color=white`
     // const hypUrl = `https://youtu.be/${props.item.vidid}?start=${props.item.start}`
