@@ -1,8 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { gsap } from "gsap";
-import { CSSRulePlugin } from "gsap/CSSRulePlugin";
-import ReactPlayer from 'react-player'
-import Expand from 'react-expand-animated';
 
 import Header from "./comps/Header"
 import Video from "./comps/Video"
@@ -17,15 +13,8 @@ import * as contentful from "contentful";
 const DATA_TYPES = ['video', 'articles', 'experience', 'socials']
 
 const App = () => {
-    const [vidOpen, setVidOpen] = useState(false);
-    const [artOpen, setArtOpen] = useState(false);
-    const [expOpen, setExpOpen] = useState(false);
 
     const [CMSData, setCMSData] = useState(DATA_TYPES.reduce((key,val) => (key[val]={}, key),{}));
-
-    const toggleVid = () => { setVidOpen(!vidOpen); }
-    const toggleArt = () => { setArtOpen(!artOpen); }
-    const toggleExp = () => { setExpOpen(!expOpen); }
 
     const client = contentful.createClient({
         space: process.env.REACT_APP_CONTENTFUL_ID,
@@ -45,55 +34,39 @@ const App = () => {
         })
     }
 
-    const GetCMSData = () => {
+    const getCMSData = () => {
         DATA_TYPES.forEach(type => {getDataForItem(type)})
-
-        console.log(CMSData)
     }
 
-    useEffect(() => { GetCMSData(); }, [])
+    useEffect(() => { getCMSData(); }, [])
 
     return(
         <div className="app-wrapper">
-            <Header />
+
+            <Header socials={CMSData['socials']}/>
 
             <div className="experience-wrapper">
-                {/* <h2 onClick={toggleExp}><a href="javascript:;">projects / experiences</a></h2>
-                <Expand open={expOpen}> */}
-                    { ContentType (
-                        expOpen, 
-                        toggleExp, 
-                        'experience', 
-                        CMSData['experience'], 
-                        Experience
-                    ) }
-                {/* </Expand> */}
+                { ContentType (
+                    'experience', 
+                    CMSData['experience'], 
+                    Experience
+                ) }
             </div>
 
             <div className="video-wrapper">
-                {/* <h2 onClick={toggleVid}><a href="javascript:;">videos</a></h2>
-                <Expand open={vidOpen}> */}
-                    { ContentType (
-                        vidOpen, 
-                        toggleVid, 
-                        'videos', 
-                        CMSData['video'], 
-                        Video
-                    ) }
-                {/* </Expand> */}
+                { ContentType (
+                    'videos', 
+                    CMSData['video'], 
+                    Video
+                ) }
             </div>
             
             <div className="article-wrapper">
-                {/* <h2 onClick={toggleArt}><a href="javascript:;">articles</a></h2>
-                <Expand open={artOpen}> */}
-                    { ContentType (
-                        artOpen,
-                        toggleArt,
-                        'articles',
-                        CMSData['articles'],
-                        Article
-                    ) }
-                {/* </Expand> */}
+                { ContentType (
+                    'articles',
+                    CMSData['articles'],
+                    Article
+                ) }
             </div>
             
             <div className="about">
