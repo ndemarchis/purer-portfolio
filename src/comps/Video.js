@@ -7,10 +7,7 @@ import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 const Video = (props) => {
 
     const {featured, link, start, title, vidid} = props.fields
-    console.log(props.fields?.caption)
-    const caption = (str) => documentToHtmlString(str)
-    console.log(caption(props.fields.caption))
-    
+    const caption = (str) => documentToHtmlString(str)    
     
     const hypUrl = `https://youtube.com/watch?v=${vidid}?start=${start}`
 
