@@ -9,12 +9,10 @@ const ContentType = (title: string, data: Object, componentTemplate: JSX.Element
         return Object.values(data).map(item => componentTemplate(item));
     }
 
-
     return (
         <div>
             <h2 onClick={() => setIsOpen(!isOpen)}>{title}</h2>
             <Expand open={isOpen}>
-                single item <br />
                 {components()}
             </Expand>
         </div>

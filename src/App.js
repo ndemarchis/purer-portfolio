@@ -36,6 +36,7 @@ const App = () => {
 
     const getCMSData = () => {
         DATA_TYPES.forEach(type => {getDataForItem(type)})
+        console.log(CMSData)
     }
 
     useEffect(() => { getCMSData(); }, [])
@@ -67,7 +68,7 @@ const App = () => {
                     CMSData['articles'],
                     Article
                 ) }
-            </div>
+            </div> 
             
             <div className="about">
                 <h2>about</h2>
