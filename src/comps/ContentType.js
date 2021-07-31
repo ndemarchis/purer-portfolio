@@ -11,7 +11,13 @@ const ContentType = (title: string, data: Object, componentTemplate: JSX.Element
 
     return (
         <div>
-            <h2 onClick={() => setIsOpen(!isOpen)}>{title}</h2>
+            <h2 
+                onClick={() => setIsOpen(!isOpen)}
+                onMouseEnter={() => {
+                }}
+                onMouseLeave={() => {
+                }}
+            >{title}</h2>
             <Expand open={isOpen}>
                 {components()}
             </Expand>

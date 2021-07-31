@@ -1,7 +1,30 @@
 body {
     background-color: black;
     color: white;
+    font-family: rig-sans, sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
+
+a {
+    color: #bbb;
+    text-decoration: none;
+    -webkit-transition: 1s;
+    transition: 1s;
+}
+
+a:hover {
+    color: #0ff;
+    text-decoration: underline;
+}
+
+h1, h2, h3 {
+    font-family: new-spirit, Georgia, 'Times New Roman', Times, serif;
+    padding: 20px;
+}
+
+h3 {font-weight: 500; font-style: italic;}
+h4 {font-weight: 900;}
 
 .app-wrapper {
     width: 70vw;
