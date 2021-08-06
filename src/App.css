@@ -2,15 +2,35 @@ body {
     background-color: black;
     color: white;
     font-family: rig-sans, sans-serif;
-    font-weight: 400;
+    font-weight: 300;
     font-style: normal;
+    -webkit-transition: 1s;
+    transition: 1s;
 }
+
+.app-wrapper {
+    width: 70vw;
+    max-width: 800px;
+    margin: auto;
+}
+
+div.headingWrapper { 
+    background-color: #111;
+    padding: 10px 25px;
+    height: 75px;
+    border-radius: 25px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+/* links */
 
 a {
     color: #bbb;
     text-decoration: none;
-    -webkit-transition: 1s;
-    transition: 1s;
+    transition: all .5s ease-in-out;
 }
 
 a:hover {
@@ -18,19 +38,26 @@ a:hover {
     text-decoration: underline;
 }
 
+/* headings */
+
 h1, h2, h3 {
     font-family: new-spirit, Georgia, 'Times New Roman', Times, serif;
-    padding: 20px;
 }
 
+h2 {text-align: center;}
 h3 {font-weight: 500; font-style: italic;}
 h4 {font-weight: 900;}
 
-.app-wrapper {
-    width: 70vw;
-    max-width: 800px;
-    margin: auto;
+h2.fancyHeading {
+    font-size: 125px;
+    transition: all 0.5s ease-in-out;
 }
+
+h2.notFancyHeading {
+    position: absolute;
+}
+
+/* mobile */
 
 @media only screen and (max-width: 600px) {
     .app-wrapper {
