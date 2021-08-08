@@ -6,6 +6,7 @@ body {
     font-style: normal;
     -webkit-transition: 1s;
     transition: 1s;
+    overflow-x: hidden;
 }
 
 /* mobile */
@@ -23,6 +24,11 @@ body {
     div.individual-experience-wrapper {
         flex-wrap: wrap-reverse;
         justify-content: center;
+    }
+
+    div.video-player,
+    img.article-image {
+        max-width: 100%;
     }
 }
 
@@ -71,6 +77,22 @@ div.headingWrapper {
     width: auto;
     height: auto;
     padding-left: 10px;
+}
+
+.individual-video-wrapper,
+.article {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.video-player,
+.article-image {
+    padding: 20px 0px;
+    max-width: 400px;
+    max-height: 225px;
+    height: auto;
+    width: auto;
 }
 
 /* links */

@@ -19,7 +19,13 @@ const Experience = (props) => {
                 }} />
             </div>
             <div className = "experience-image-wrapper" >
-                <img className = "experience-image" src={img.fields.file.url} alt={title} />
+                <a href= {link}>
+                    <img 
+                        className = "experience-image"
+                        src = {img.fields.file.url} 
+                        alt = {title} 
+                    />
+                </a>
             </div>
         </div>
     )

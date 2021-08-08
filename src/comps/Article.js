@@ -8,25 +8,26 @@ const Article = (props) => {
     
     return (
         <div className="article">
-            <h3 className="article-title">
-                <a href={url}>
-                    {title}
-                </a>
-            </h3>
             <a href={url}>
                 <img 
                     src={img.fields.file.url} 
                     alt={img.fields.title} 
-                    style={{maxWidth: '100%'}}
                     className="article-image"
                 />
             </a>
-            <h4>
-                {publication}
-            </h4>
-            {caption && (
-                <p dangerouslySetInnerHTML={{__html: caption}}></p>
-            )}
+            <div>
+                <h3 className="article-title">
+                    <a href={url}>
+                        {title}
+                    </a>
+                </h3>
+                <h4>
+                    {publication}
+                </h4>
+                {caption && (
+                    <p dangerouslySetInnerHTML={{__html: caption}}></p>
+                )}
+            </div>
         </div>   
     )
 }
