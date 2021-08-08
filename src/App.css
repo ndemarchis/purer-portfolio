@@ -19,6 +19,11 @@ body {
     div.header {
         justify-content: space-evenly;
     }
+
+    div.individual-experience-wrapper {
+        flex-wrap: wrap-reverse;
+        justify-content: center;
+    }
 }
 
 /* divs and stuff */
@@ -45,6 +50,27 @@ div.headingWrapper {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+}
+
+.individual-experience-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+}
+
+.experience-image-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+}
+
+.experience-image {
+    max-height: 150px;
+    max-width: 250px;
+    width: auto;
+    height: auto;
+    padding-left: 10px;
 }
 
 /* links */
