@@ -10,6 +10,7 @@ import './App.css'
 
 import * as contentful from "contentful";
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import DOMPurify from 'dompurify';
 
 const DATA_TYPES = ['video', 'articles', 'experience', 'socials', 'manifesto']
 
@@ -22,7 +23,7 @@ const App = () => {
         accessToken: process.env.REACT_APP_CONTENTFUL_KEY,
     });
 
-    const getDataForItem = async (id: string) => {
+    const getDataForItem = async (id = '') => {
         client.getEntries({
             content_type: id
         })
@@ -45,7 +46,7 @@ const App = () => {
     return(
         <div className="app-wrapper">
 
-            {/* <Header socials={CMSData['socials']}/> */}
+            <Header socials={CMSData['socials']}/>
 
             <div className="experience-wrapper">
                 { ContentType (
@@ -73,9 +74,15 @@ const App = () => {
             
             <div className="about">
                 <h2>about</h2><br />
+                {/* { innerHTMLDivGen(Object.values(CMSData?.manifesto)[0]?.fields.manifesto) } */}
                 <div dangerouslySetInnerHTML={{
-                    __html: documentToHtmlString(Object.values(CMSData?.manifesto)[0]?.fields.manifesto)
-                }}></div><br /><br />
+                    __html: DOMPurify.sanitize(
+                        documentToHtmlString(
+                            Object.values(CMSData?.manifesto)[0]?.fields.manifesto
+                        )
+                    )
+                }} />
+                <br /><br />
             </div>
         </div>
     )  

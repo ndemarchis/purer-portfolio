@@ -8,6 +8,21 @@ body {
     transition: 1s;
 }
 
+/* mobile */
+
+@media only screen and (max-width: 600px) {
+    div.app-wrapper {
+        width: 80vw;
+        margin: auto;
+    }
+
+    div.header {
+        justify-content: space-evenly;
+    }
+}
+
+/* divs and stuff */
+
 .app-wrapper {
     width: 70vw;
     max-width: 800px;
@@ -23,6 +38,13 @@ div.headingWrapper {
     align-content: center;
     align-items: center;
     justify-content: space-evenly;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 /* links */
@@ -56,12 +78,3 @@ h2.fancyHeading {
 h2.notFancyHeading {
     position: absolute;
 }
-
-/* mobile */
-
-@media only screen and (max-width: 600px) {
-    .app-wrapper {
-        max-width: 90vw;
-        margin: auto;
-    }
-  }
