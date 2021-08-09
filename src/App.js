@@ -36,11 +36,7 @@ const App = () => {
         })
     }
 
-    const getCMSData = () => {
-        DATA_TYPES.forEach(type => {getDataForItem(type)})
-        console.log(CMSData)
-    }
-
+    const getCMSData = () => { DATA_TYPES.forEach(type => {getDataForItem(type)}) }
     useEffect(() => { getCMSData(); }, [])
 
     return(
@@ -74,7 +70,6 @@ const App = () => {
             
             <div className="about">
                 <h2>about</h2><br />
-                {/* { innerHTMLDivGen(Object.values(CMSData?.manifesto)[0]?.fields.manifesto) } */}
                 <div dangerouslySetInnerHTML={{
                     __html: DOMPurify.sanitize(
                         documentToHtmlString(

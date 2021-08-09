@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Expand from 'react-expand-animated';
 import useInterval from '../utils/useInterval';
 
@@ -48,7 +48,7 @@ const ContentType = (title = '', data = {}, componentTemplate = <div />) => {
             </div>
             <div style={{ padding: '10px', }}>
                 <Expand open={isOpen}>
-                    { components() }
+                    { components () }
                 </Expand>
             </div>
         </div>

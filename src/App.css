@@ -110,6 +110,14 @@ a:hover {
 
 /* headings */
 
+h3 > a {
+    color: rgb(62, 92, 230);
+}
+
+h3 > a:hover {
+    color: #0ff;
+}
+
 h1, h2, h3 {
     font-family: new-spirit, Georgia, 'Times New Roman', Times, serif;
 }

@@ -9,7 +9,7 @@ const Experience = (props) => {
     return (
         <div className = "individual-experience-wrapper" >
             <div className = "experience-content-wrapper">
-                <a href={link}><h3>{title}</h3></a>
+            <h3><a href={link} className="individual-experience-title">{title}</a></h3>
                 <p>{role}</p>
                 <p>{dates}</p> 
                 <p dangerouslySetInnerHTML={{

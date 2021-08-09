@@ -16,7 +16,7 @@ const Video = (props) => {
         <div style = {{
             // display: 'flex',
         }}>
-            <div className = "individual-video-wrapper">
+            {vidid && <div className = "individual-video-wrapper">
                 <ReactPlayer 
                     className= "video-player"
                     url={hypUrl} 
@@ -32,10 +32,10 @@ const Video = (props) => {
                             }
                         },
                     }}
-                /> 
-            </div>
+                />
+            </div> }
             <div>
-                <a href={hypUrl}><h3>{title}</h3></a>
+                <h3><a href={hypUrl}>{title}</a></h3>
                 <p dangerouslySetInnerHTML={{
                     __html: DOMPurify.sanitize(
                         documentToHtmlString(caption)

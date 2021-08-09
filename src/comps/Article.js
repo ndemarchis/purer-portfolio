@@ -1,9 +1,12 @@
 import React from "react";
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
+import {sanitize} from "dompurify"
+
 const Article = (props) => {
 
     const {img, publication, title, url} = props.fields
+    const date = new Date(props.fields?.date)
     const caption = documentToHtmlString(props.fields?.caption)
     
     return (
@@ -22,10 +25,14 @@ const Article = (props) => {
                     </a>
                 </h3>
                 <h4>
-                    {publication}
+                    <i>{publication}</i>
+                    {publication && date ? " — " : ""}
+                    {date.toLocaleDateString('en-US',  { 
+                        year: 'numeric', month: 'long', day: 'numeric' 
+                    })}
                 </h4>
                 {caption && (
-                    <p dangerouslySetInnerHTML={{__html: caption}}></p>
+                    <p dangerouslySetInnerHTML={{__html: sanitize(caption)}}></p>
                 )}
             </div>
         </div>   
