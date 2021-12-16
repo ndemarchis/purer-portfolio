@@ -17,22 +17,29 @@ body {
 
 @media only screen and (max-width: 600px) {
     div.app-wrapper {
+        width: 100%;
+        margin: auto;
+    }
+
+    div.headingWrapper {
         width: 80vw;
         margin: auto;
     }
 
     div.header {
         justify-content: space-evenly;
+        flex-direction: column;
     }
 
-    div.individual-experience-wrapper {
-        flex-wrap: wrap-reverse;
+    div.about {
+        width: 80vw;
+        margin: auto;
+    }
+
+    div.individual-thing {
         justify-content: center;
-    }
-
-    div.video-player,
-    img.article-image {
-        max-width: 100%;
+        padding: 25px 20px;
+        flex-wrap: wrap-reverse;
     }
 }
 
@@ -53,6 +60,7 @@ div.headingWrapper {
     align-content: center;
     align-items: center;
     justify-content: space-evenly;
+    cursor: pointer;
 }
 
 .header {
@@ -60,6 +68,20 @@ div.headingWrapper {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+}
+
+.itemWrapper {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.individual-thing {
+    gap: 15px;
+    padding: 10px 25px;
+    border-radius: 25px;
+    border: #111 solid 5px;
 }
 
 .individual-experience-wrapper {
@@ -86,8 +108,11 @@ div.headingWrapper {
 .individual-video-wrapper,
 .article {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+}
+
+.article {
+    flex-wrap: wrap;
 }
 
 .video-player,
@@ -97,6 +122,10 @@ div.headingWrapper {
     max-height: 225px;
     height: auto;
     width: auto;
+}
+
+.video-description-wrapper {
+    padding: 20px;
 }
 
 /* links */
@@ -131,7 +160,7 @@ h3 {font-weight: 500; font-style: italic;}
 h4 {font-weight: 900;}
 
 h2.fancyHeading {
-    font-size: 125px;
+    font-size: 110px;
     transition: all 0.5s ease-in-out;
 }
 

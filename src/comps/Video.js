@@ -13,10 +13,8 @@ const Video = (props) => {
     const hypUrl = `https://youtube.com/watch?v=${vidid}${start !== 0 ? "&start=" + start : ""}`
 
     return (
-        <div style = {{
-            // display: 'flex',
-        }}>
-            {vidid && <div className = "individual-video-wrapper">
+        <div className="individual-video-wrapper individual-thing">
+            {vidid && <div className = "video-wrapper">
                 <ReactPlayer 
                     className= "video-player"
                     url={hypUrl} 
@@ -34,7 +32,7 @@ const Video = (props) => {
                     }}
                 />
             </div> }
-            <div>
+            <div className="video-description-wrapper">
                 <h3><a href={hypUrl}>{title}</a></h3>
                 <p dangerouslySetInnerHTML={{
                     __html: DOMPurify.sanitize(

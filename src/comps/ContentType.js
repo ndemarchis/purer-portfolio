@@ -46,9 +46,10 @@ const ContentType = (title = '', data = {}, componentTemplate = <div />) => {
                 </h2>
                 <h2 className="notFancyHeading">{title}</h2>
             </div>
-            <div style={{ padding: '10px', }}>
-                <Expand open={isOpen}>
+            <div>
+                <Expand open={isOpen} className="itemWrapper">
                     { components () }
+                    <br />
                 </Expand>
             </div>
         </div>

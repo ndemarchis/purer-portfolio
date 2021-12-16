@@ -7,11 +7,10 @@ const Experience = (props) => {
     const {dates, img, link, role, title, caption} = props.fields
     
     return (
-        <div className = "individual-experience-wrapper" >
+        <div className = "individual-experience-wrapper individual-thing" >
             <div className = "experience-content-wrapper">
             <h3><a href={link} className="individual-experience-title">{title}</a></h3>
-                <p>{role}</p>
-                <p>{dates}</p> 
+                <p>{role}, {dates}</p> 
                 <p dangerouslySetInnerHTML={{
                     __html: DOMPurify.sanitize(
                         documentToHtmlString(caption)

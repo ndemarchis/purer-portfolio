@@ -10,7 +10,7 @@ const Article = (props) => {
     const caption = documentToHtmlString(props.fields?.caption)
     
     return (
-        <div className="article">
+        <div className="article individual-thing">
             <a href={url}>
                 <img 
                     src={img.fields.file.url} 

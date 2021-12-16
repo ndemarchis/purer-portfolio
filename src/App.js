@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 
 import ContentType from "./comps/ContentType";
 import Header from "./comps/Header"
@@ -16,14 +16,16 @@ const DATA_TYPES = ['video', 'articles', 'experience', 'socials', 'manifesto']
 
 const App = () => {
 
-    const [CMSData, setCMSData] = useState(DATA_TYPES.reduce((key,val) => (key[val]={}, key),{}));
+    const [CMSData, setCMSData] = useState(DATA_TYPES.reduce((key, val) => (key[val]={}, key),{}));
 
-    const client = contentful.createClient({
-        space: process.env.REACT_APP_CONTENTFUL_ID,
-        accessToken: process.env.REACT_APP_CONTENTFUL_KEY,
-    });
+    const createClient = () => {
+        return contentful.createClient({
+            space: process.env.REACT_APP_CONTENTFUL_ID,
+            accessToken: process.env.REACT_APP_CONTENTFUL_KEY,
+        });
+    }
 
-    const getDataForItem = async (id = '') => {
+    const getDataForItem = (id = '', client) => {
         client.getEntries({
             content_type: id
         })
@@ -36,49 +38,59 @@ const App = () => {
         })
     }
 
-    const getCMSData = () => { DATA_TYPES.forEach(type => {getDataForItem(type)}) }
-    useEffect(() => { getCMSData(); }, [])
+    useEffect(() => {
+        const client = createClient()
+        DATA_TYPES.forEach( type => {
+            getDataForItem(type, client)
+        }); 
+    }, [])
 
-    return(
+    return (
         <div className="app-wrapper">
 
             <Header socials={CMSData['socials']}/>
+            {console.log(CMSData)}
 
-            <div className="experience-wrapper">
-                { ContentType (
-                    'experience', 
-                    CMSData['experience'], 
-                    Experience
-                ) }
-            </div>
+            {<div>
 
-            <div className="video-wrapper">
-                { ContentType (
-                    'videos', 
-                    CMSData['video'], 
-                    Video
-                ) }
-            </div>
-            
-            <div className="article-wrapper">
-                { ContentType (
-                    'articles',
-                    CMSData['articles'],
-                    Article
-                ) }
-            </div> 
-            
-            <div className="about">
-                <h2>about</h2><br />
-                <div dangerouslySetInnerHTML={{
-                    __html: DOMPurify.sanitize(
-                        documentToHtmlString(
-                            Object.values(CMSData?.manifesto)[0]?.fields.manifesto
+                <div className="about">
+                    <div dangerouslySetInnerHTML={{
+                        __html: DOMPurify.sanitize(
+                            documentToHtmlString(
+                                Object.values(CMSData?.manifesto)[0]?.fields.manifesto
+                            )
                         )
-                    )
-                }} />
-                <br /><br />
+                    }} />
+                    <br />
+                </div>
+
+                <div className="experience-wrapper">
+                    { ContentType (
+                        'experience', 
+                        CMSData['experience'], 
+                        Experience
+                    ) }
+                </div>
+
+                <div className="video-wrapper">
+                    { ContentType (
+                        'videos', 
+                        CMSData['video'], 
+                        Video
+                    ) }
+                </div>
+                
+                <div className="article-wrapper">
+                    { ContentType (
+                        'articles',
+                        CMSData['articles'],
+                        Article
+                    ) }
+                </div> 
             </div>
+            }
+
+            <br /><br />
         </div>
     )  
 }
